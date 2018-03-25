@@ -10,6 +10,7 @@
  * @package composer-engine.
  */
 
+if (!interface_exists('Throwable')) {
 /**
  * Throwable.
  */
@@ -23,4 +24,5 @@ interface Throwable
     public function getTraceAsString();
     public function getPrevious();
     public function __toString();
+}
 }
