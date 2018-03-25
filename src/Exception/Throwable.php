@@ -1,6 +1,6 @@
 <?php
 /**
- * Celestial Body.
+ * Composer Engine.
  *
  * @author  Nicholas English <nenglish0820@outlook.com>.
  *
@@ -10,7 +10,7 @@
  * @package composer-engine.
  */
  
-namespace Nenglish7/ComposerEngine/Exception;
+namespace Nenglish7\ComposerEngine\Exception;
 
 /**
  * Throwable.
