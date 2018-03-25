@@ -19,7 +19,7 @@
     ],
     "autoload": {
         "files": ["./functions.php"],
-        "classmap": ["./Traversable.php"]
+        "classmap": ["./Traversable.php", "./Throwable.php"]
     },
     "require": {
         "php": "^5.6|^7"
