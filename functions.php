@@ -10,7 +10,7 @@
  * @package composer-engine.
  */
 
-function ComposerInstall()
+function ComposerInstall($packageName = null)
 {
 }
 
