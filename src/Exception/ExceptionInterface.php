@@ -15,6 +15,6 @@ namespace Nenglish7\ComposerEngine\Exception;
 /**
  * ExceptionInterface.
  */
-interface ExceptionInterface extends Throwable
+interface ExceptionInterface extends \Throwable
 {
 }
