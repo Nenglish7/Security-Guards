@@ -1,6 +1,6 @@
 {
     "name": "nicholas/composer-engine",
-    "description": "A composer controller for managing your dependencies.",
+    "description": "A composer controller for managing your dependencies from your php script.",
     "keywords": [
         "composer-package",
         "secure-by-default",
