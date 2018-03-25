@@ -10,9 +10,11 @@
  * @package composer-engine.
  */
 
+if (!interface_exists('Traversable')) {
 /**
  * Traversable.
  */
 interface Traversable
 {
+}
 }
