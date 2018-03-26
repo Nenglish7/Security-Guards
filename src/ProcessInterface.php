@@ -21,7 +21,7 @@ interface ProcessInterface
      * Process the requested command.
      *
      * @param string $commandType The requested command type.
-     * @param array $options      The requested options for the command.
+     * @param mixed $options      The requested options for the command.
      *
      * @throws InvalidArgumentException If the command options is not an array or Traversable.
      * @throws InvalidArgumentException If the command type is not recognized.
