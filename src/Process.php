@@ -76,7 +76,7 @@ class Process implements ProcessInterface
      */
     public function run()
     {
-        $optionLine .= ' ' . \implode(' ', $this->options);
+        $optionLine = ' ' . \implode(' ', $this->options);
         if (\trim($optionLine) == '') {
             $optionLine = '';
         }
