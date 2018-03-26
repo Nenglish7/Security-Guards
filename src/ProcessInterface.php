@@ -13,8 +13,8 @@
 namespace Nenglish7\ComposerEngine;
 
 /**
- * AbstractProcess.
+ * ProcessInterface.
  */
-abstract class AbstractProcess
+interface ProcessInterface
 {
 }
