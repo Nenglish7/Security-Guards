@@ -57,9 +57,9 @@ class Process implements ProcessInterface
             throw new Exception\InvalidArgumentException(\sprintf('The variable `$command` needs to be a string. Passed: `%s`.', \gettype($commandType)));
         }
         if (is_array($options) || $options instanceof Traversable) {
-            foreach ($options as (array) $option) {
+            foreach ($options as $key => $option) {
                 if (!in_array($option, Options::INSTALL, true)) {
-                    throw new Exception\UnexpectedValueException(sprintf('The `%s` option is not recognized. Allowed: `%s`.', \htmlspecialchars(\strval($option), ENT_QUOTES), \serialize(Options::INSTALL)));
+                    throw new Exception\UnexpectedValueException(sprintf('The `%s` option is not recognized. Allowed: `%s`. Reference ID: %s.', \htmlspecialchars(\strval($option), ENT_QUOTES), \serialize(Options::INSTALL), \strval($key)));
                 }
             }
         } else {
