@@ -23,6 +23,7 @@ interface ProcessInterface
      * @param array $options     The requested options for the command.
      * @param string $commanType The requested command type.
      *
+     * @throws InvalidArgumentException If the command options is not an array or Traversable.
      * @throws InvalidArgumentException If the command type is not recognized.
      * @throws UnexpectedValueException If the command options are not recognized.
      *
