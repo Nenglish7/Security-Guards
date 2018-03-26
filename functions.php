@@ -17,7 +17,7 @@ use Nenglish7\ComposerEngine\UnexpectedValueException as Nenglish7UnexpectedValu
 
 function composer_install($options = [])
 {
-    if (is_array($options) || $options instanceof Traversable || empty($options)) {
+    if (is_array($options) || $options instanceof Traversable) {
         foreach ($options as $option) {
             if (!in_array($option, Options::INSTALL, true)) {
                 throw new Nenglish7UnexpectedValueException(sprintf(
@@ -30,13 +30,7 @@ function composer_install($options = [])
         $process = new Process($options, 'install');
         $process->run();
     }
-    trigger_error('The variable `$options` is not an array or an instance of `Traversable`.', E_USER_ERROR);
-}
-
-function ComposerUpdate()
-{
-}
-
-function ComposerRemove()
-{
+    throw new Nenglish7InvalidArgumentException(
+        'The variable `$options` is not an array or an instance of `Traversable`.'
+    );
 }
