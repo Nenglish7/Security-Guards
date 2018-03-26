@@ -41,6 +41,7 @@ class Process implements ProcessInterface
      * @param string $commanType The requested command type.
      *
      * @throws InvalidArgumentException If the command type is not recognized.
+     * @throws UnexpectedValueException If the command options are not recognized.
      *
      * @return void
      */
