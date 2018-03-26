@@ -58,7 +58,7 @@ class Process implements ProcessInterface
         }
         if (is_array($options) || $options instanceof Traversable) {
             $options = (array) $options;
-            foreach ($options as $option) {
+            foreach ($options as $key => $option) {
                 if (!in_array($option, Options::INSTALL, true)) {
                     throw new Exception\UnexpectedValueException(sprintf('The `%s` option is not recognized. Allowed: `%s`.', \htmlspecialchars(\strval($option), ENT_QUOTES), \serialize(Options::INSTALL)));
                 }
