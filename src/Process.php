@@ -13,6 +13,11 @@
 namespace Nenglish7\ComposerEngine;
 
 /**
+ * use Traversable;
+ */
+use Traversable;
+
+/**
  * Process.
  */
 class Process implements ProcessInterface
@@ -38,7 +43,7 @@ class Process implements ProcessInterface
      * Process the requested command.
      *
      * @param string $commandType The requested command type.
-     * @param array $options      The requested options for the command.
+     * @param mixed $options      The requested options for the command.
      *
      * @throws InvalidArgumentException If the command options is not an array or Traversable.
      * @throws InvalidArgumentException If the command type is not recognized.
@@ -73,7 +78,7 @@ class Process implements ProcessInterface
     {
         $optionLine = ' ';
         foreach ($this->options as $option) {
-            $optionLine .= \escapeshellarg($option) . ' ';
+            $optionLine .= \escapeshellarg(\strval($option)) . ' ';
         }
         $optionLine = rtrim($optionLine);
         if ($this->commanType == 'install') {
