@@ -15,11 +15,6 @@ use Nenglish7\ComposerEngine\Process;
 use Nenglish7\ComposerEngine\InvalidArgumentException as Nenglish7InvalidArgumentException;
 use Nenglish7\ComposerEngine\UnexpectedValueException as Nenglish7UnexpectedValueException;
 
-function get_root_path()
-{
-    return __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' .DIRECTORY_SEPARATOR;
-}
-
 function composer_install($options = [])
 {
     if (is_array($options) || $options instanceof Traversable || empty($options)) {
