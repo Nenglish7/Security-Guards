@@ -16,5 +16,23 @@ namespace Nenglish7\ComposerEngine;
  * ProcessInterface.
  */
 interface ProcessInterface
-{
+{   
+    /**
+     * Process the requested command.
+     *
+     * @param array $options     The requested options for the command.
+     * @param string $commanType The requested command type.
+     *
+     * @throws InvalidArgumentException If the command type is not recognized.
+     *
+     * @return void
+     */
+    public function __construct($options = [], $commandType);
+    
+    /**
+     * Execute the command.
+     *
+     * @return void
+     */
+    public function run();
 }
