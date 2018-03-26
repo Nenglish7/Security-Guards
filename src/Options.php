@@ -33,47 +33,4 @@ class Options
         '--apcu-autoloader',
         '--ignore-platform-reqs'
     ];
-    /** @const array UPDATE A list of all the update options. */
-    const UPDATE = [
-        '--prefer-source',
-        '--prefer-dist',
-        '--dry-run',
-        '--dev',
-        '--no-dev',
-        '--lock',
-        '--no-autoloader',
-        '--no-scripts',
-        '--no-progress',
-        '--no-suggest',
-        '--with-dependencies',
-        '--with-all-dependencies',
-        '--optimize-autoloader',
-        '--classmap-authoritative',
-        '--apcu-autoloader',
-        '--ignore-platform-reqs',
-        '--prefer-stable',
-        '--prefer-lowest',
-        '--interactive',
-        '--root-reqs'
-    ];
-    /** @const array REQUIRE A list of all the require options. */
-    const REQUIRE = [
-        '--dev',
-        '--prefer-source',
-        '--prefer-dist',
-        '--no-progress',
-        '--no-suggest',
-        '--no-update',
-        '--no-scripts',
-        '--update-no-dev',
-        '--with-dependencies',
-        '--with-all-dependencies',
-        '--ignore-platform-reqs',
-        '--prefer-stable',
-        '--prefer-lowest',
-        '--sort-packages',
-        '--optimize-autoloader',
-        '--classmap-authoritative',
-        '--apcu-autoloader'
-    ];
 }
