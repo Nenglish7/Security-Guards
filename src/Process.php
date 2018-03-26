@@ -76,11 +76,10 @@ class Process implements ProcessInterface
      */
     public function run()
     {
-        $optionLine = ' ';
-        foreach ($this->options as $option) {
-            $optionLine .= \escapeshellarg(\strval($option)) . ' ';
+        $optionLine .= ' ' . \implode(' ', $this->options);
+        if (\trim($optionLine) == '') {
+            $optionLine = '';
         }
-        $optionLine = rtrim($optionLine);
         if ($this->commanType == 'install') {
             \exec('composer install' . $optionLine);
         }
