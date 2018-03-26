@@ -56,4 +56,24 @@ class Options
         '--interactive',
         '--root-reqs'
     ];
+    /** @const array REQUIRE A list of all the require options. */
+    const REQUIRE = [
+        '--dev',
+        '--prefer-source',
+        '--prefer-dist',
+        '--no-progress',
+        '--no-suggest',
+        '--no-update',
+        '--no-scripts',
+        '--update-no-dev',
+        '--with-dependencies',
+        '--with-all-dependencies',
+        '--ignore-platform-reqs',
+        '--prefer-stable',
+        '--prefer-lowest',
+        '--sort-packages',
+        '--optimize-autoloader',
+        '--classmap-authoritative',
+        '--apcu-autoloader'
+    ];
 }
