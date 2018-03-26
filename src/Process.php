@@ -37,8 +37,8 @@ class Process implements ProcessInterface
     /**
      * Process the requested command.
      *
-     * @param array $options     The requested options for the command.
      * @param string $commanType The requested command type.
+     * @param array $options     The requested options for the command.
      *
      * @throws InvalidArgumentException If the command options is not an array or Traversable.
      * @throws InvalidArgumentException If the command type is not recognized.
@@ -46,7 +46,7 @@ class Process implements ProcessInterface
      *
      * @return void
      */
-    public function __construct($options = [], $commandType)
+    public function __construct($commandType, $options = [])
     {
         if (!\in_array($commandType, $this->commandTypes, \true)) {
             throw new Exception\InvalidArgumentException(\sprintf('The variable `$command` needs to be a string. Passed: `%s`.', \gettype($commandType)));
