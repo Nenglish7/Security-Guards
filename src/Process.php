@@ -28,7 +28,10 @@ class Process implements ProcessInterface
     private $commandTypes = [
         'require',
         'remove',
-        'update'
+        'update',
+        'install',
+        'validate',
+        'show'
     ];
     
     /**
