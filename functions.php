@@ -10,25 +10,9 @@
  * @package composer-engine.
  */
 
-/**
- * use Nenglish7\ComposerEngine\Process;
- */
-use Nenglish7\ComposerEngine\Process;
+putenv('COMPOSER_HOME=' . getcwd() . '/vendor/bin/composer');
 
-function composer_require($packageName = '', $currentVersion = '', $options = [])
+/** @link <https://getcomposer.org/doc/03-cli.md#install>. */
+function composer_install($options = [])
 {
-    $process = new Process('require', $options, $packageName, $currentVersion);
-    return $process->run();
-}
-
-function composer_update($packageName = '', $options = [])
-{
-    $process = new Process('update', $options, $packageName);
-    return $process->run();
-}
-
-function composer_remove($packageName = '', $options = [])
-{
-    $process = new Process('remove', $options, $packageName);
-    return $process->run();
 }
