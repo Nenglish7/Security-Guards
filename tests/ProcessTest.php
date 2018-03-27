@@ -41,6 +41,14 @@ class ProcessTest extends TestCase
         $this->assertTrue(\true);
     }
     
+    public function testRun()
+    {
+        $process = new Process('install', [
+        ]);
+        $process->run();
+        $this->assertTrue(\true);
+    }
+    
     public function testException1()
     {
         $this->expectException(\Nenglish7\ComposerEngine\Exception\UnexpectedValueException::class);
