@@ -20,7 +20,7 @@
     "autoload": {
         "psr-4": {
             "Nenglish7\\ComposerEngine\\": "./src"
-        }
+        },
         "files": ["./functions.php"],
         "classmap": ["./Traversable.php", "./Throwable.php"]
     },
