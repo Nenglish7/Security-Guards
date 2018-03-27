@@ -16,25 +16,29 @@ namespace Nenglish7\ComposerEngine;
  * ProcessInterface.
  */
 interface ProcessInterface
-{   
+{
     /**
      * Process the requested command.
      *
-     * @param string $commandType The requested command type.
-     * @param mixed $options      The requested options for the command.
+     * @param string $commandType    The requested command type.
+     * @param mixed $options         The requested options for the command.
+     * @param string $packageName    The name of the package.
+     * @param string $currentVersion The version requested from the package.
      *
      * @throws InvalidArgumentException If the command options is not an array or Traversable.
      * @throws InvalidArgumentException If the command type is not recognized.
      * @throws UnexpectedValueException If the command options are not recognized.
+     * @throws InvalidArgumentException If the package name is not a string.
+     * @throws InvalidArgumentException If the version constraint is not a string
      *
      * @return void
      */
-    public function __construct($commandType, $options = []);
+    public function __construct($commandType, $options = [], $packageName = '', $currentVersion = '');
     
     /**
-     * Execute the command.
+     * Execute a composer command based on set variables.
      *
-     * @return void
+     * @return string The command output.
      */
     public function run();
 }
