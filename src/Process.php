@@ -75,18 +75,7 @@ class Process implements ProcessInterface
                 \gettype($commandType)
             ));
         }
-        if (is_array($options) || $options instanceof Traversable) {
-            foreach ($options as $option) {
-                if (!in_array($option, Options::INSTALL, true)) {
-                    throw new Exception\UnexpectedValueException(sprintf(
-                        'The `%s` option is not recognized. Allowed: `%s`. Reference ID: %s.',
-                        \htmlspecialchars(\strval($option), ENT_QUOTES),
-                        \serialize(Options::INSTALL),
-                        \strval($key)
-                    ));
-                }
-            }
-        } else {
+        if (!is_array($options) && !($options instanceof Traversable)) {
             throw new Exception\InvalidArgumentException('The variable `$options` is not an array or an instance of `Traversable`.');
         }
         if (!\is_string($packageName)) {
