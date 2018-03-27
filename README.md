@@ -19,3 +19,4 @@ GPL-3.0 - A short and simple permissive license with conditions only requiring p
 
 -------
 - <https://nenglish7.github.io/composer-engine/commands>
+- <https://packagist.org/packages/nicholas/composer-engine>
