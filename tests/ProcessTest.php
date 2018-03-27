@@ -26,10 +26,10 @@ class ProcessTest extends TestCase
         // {{
     public function testConstructor()
     {
-        $process1 = new Process();
-        $process2 = new Process();
-        $process3 = new Process();
-        $process4 = new Process();
+        $process1 = new Process('update');
+        $process2 = new Process('update');
+        $process3 = new Process('update');
+        $process4 = new Process('update');
         $this->assertTrue((bool) $process1);
         $this->assertTrue((bool) $process2);
         $this->assertTrue((bool) $process3);
