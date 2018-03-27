@@ -46,7 +46,7 @@ class ProcessTest extends TestCase
         $process = new Process('install', [
         ]);
         $process->run();
-        /composer_install();
+        \composer_install();
         $this->assertTrue(\true);
     }
     
