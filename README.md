@@ -6,7 +6,7 @@ A composer controller for managing your dependencies.
 
 ## Installation
 
-You should always use composer as your dependency manager. You can install composer at the [Composer Website](https://getcomposer.org/). Simply run the command below to install the Betelgeuse Star System.
+You should always use composer as your dependency manager. You can install composer at the [Composer Website](https://getcomposer.org/). Simply run the command below to install the composer-engine.
 
 ```sh
 composer require nicholas/composer-engine
