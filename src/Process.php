@@ -47,57 +47,115 @@ class Process implements ProcessInterface
     private $packageName = '';
     
     /**
+     * @var string $currentVersion The version requested from the package.
+     */
+    private $currentVersion = '';
+    
+    /**
      * Process the requested command.
      *
-     * @param string $commandType The requested command type.
-     * @param mixed $options      The requested options for the command.
-     * @param string $packageName The name of the package.
+     * @param string $commandType    The requested command type.
+     * @param mixed $options         The requested options for the command.
+     * @param string $packageName    The name of the package.
+     * @param string $currentVersion The version requested from the package.
      *
      * @throws InvalidArgumentException If the command options is not an array or Traversable.
      * @throws InvalidArgumentException If the command type is not recognized.
      * @throws UnexpectedValueException If the command options are not recognized.
+     * @throws InvalidArgumentException If the package name is not a string.
+     * @throws InvalidArgumentException If the version constraint is not a string
      *
      * @return void
      */
-    public function __construct($commandType, $options = [], $packageName = '')
+    public function __construct($commandType, $options = [], $packageName = '', $currentVersion = '')
     {
         if (!\in_array($commandType, $this->commandTypes, \true)) {
-            throw new Exception\InvalidArgumentException(\sprintf('The variable `$command` needs to be a string. Passed: `%s`.', \gettype($commandType)));
+            throw new Exception\InvalidArgumentException(\sprintf(
+                'The variable `$command` needs to be a string. Passed: `%s`.',
+                \gettype($commandType)
+            ));
         }
         if (is_array($options) || $options instanceof Traversable) {
-            foreach ($options as $key => $option) {
+            foreach ($options as $option) {
                 if (!in_array($option, Options::INSTALL, true)) {
-                    throw new Exception\UnexpectedValueException(sprintf('The `%s` option is not recognized. Allowed: `%s`. Reference ID: %s.', \htmlspecialchars(\strval($option), ENT_QUOTES), \serialize(Options::INSTALL), \strval($key)));
+                    throw new Exception\UnexpectedValueException(sprintf(
+                        'The `%s` option is not recognized. Allowed: `%s`. Reference ID: %s.',
+                        \htmlspecialchars(\strval($option), ENT_QUOTES),
+                        \serialize(Options::INSTALL),
+                        \strval($key)
+                    ));
                 }
             }
         } else {
             throw new Exception\InvalidArgumentException('The variable `$options` is not an array or an instance of `Traversable`.');
         }
-        $this->commandType = $commandType;
+        if (!\is_string($packageName)) {
+            throw new Exception\InvalidArgumentException(\sprintf(
+                'The variable `$packageName` needs to be a string. Passed: `%s`.',
+                \gettype($packageName)
+            ));
+        }
+        if (!\is_string($currentVersion)) {
+            throw new Exception\InvalidArgumentException(\sprintf(
+                'The variable `$currentVersion` needs to be a string. Passed: `%s`.',
+                \gettype($currentVersion)
+            ));
+        }
+        $this->currentVersion = \trim($currentVersion);
+        $this->packageName = \trim($packageName);
+        $this->commandType = \trim($commandType);
         $this->options = $options;
-        $this->packageName = $packageName;
     }
     
     /**
-     * Execute the command.
+     * Execute a composer command based on set variables.
      *
-     * @return void
+     * @return string The command output.
      */
     public function run()
+    {
+        $options = $this->escapeArgument(\trim($this->getOptions));
+        if ($this->commandType != 'update') {
+            if ($this->commandType == 'require') {
+                if (\trim($this->currentVersion) != '') {
+                    $this->packageName .= ':';
+                }
+            }
+            $command = $this->escapeArgument($this->commandType);
+            return \shell_exec("composer {$command} {$this->packageName}{$this->currentVersion} {$options}");
+        } else {
+            if ($this->packageName == '') {
+                $this->packageName .= ' ';
+            }
+            $command = $this->escapeArgument($this->commandType);
+            return \shell_exec("composer {$command}{$this->packageName} {$options}");
+        }
+    }
+    
+    /**
+     * Escape shell arguments in a command.
+     *
+     * @param string $data The shell argument that needs to be escaped.
+     *
+     * @return string The escaped shell argument.
+     */
+    private function escapeArgument($data)
+    {
+        return \escapeshellarg((string) $data);
+    }
+    
+    /**
+     * Format the options array to a string.
+     *
+     * @return string The options array formated to string.
+     */
+    private function getOptions()
     {
         $options = (array) $this->options;
         $optionLine = ' ' . \implode(' ', $options);
         if (\trim($optionLine) == '') {
             $optionLine = '';
         }
-        $packageName = \escapeshellarg($this->packageName);
-        if ($this->commandType === 'require') {
-            $complete = 0;
-            $out = array();
-            \exec('composer require ' . $optionLine . ' 2>&1', $out, $complete);
-            if ($complete !== 0) {
-                die('We are not able to run `composer require`. If you do not have composer installed please see <a href="https://getcomposer.org/">https://getcomposer.org/</a>');
-            }
-        }
+        return $optionLine;
     }
 }
