@@ -17,6 +17,6 @@ use Nenglish7\ComposerEngine\Process;
 
 function composer_install($options = [])
 {
-    $process = new Process($options, 'install');
+    $process = new Process('install', $options);
     $process->run();
 }
