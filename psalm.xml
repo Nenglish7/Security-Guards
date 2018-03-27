@@ -7,7 +7,7 @@
         <directory name="./src" />
     </projectFiles>
     <issueHandlers>
-        <MixedInferredReturnType errorLevel="suppress">
+        <MixedInferredReturnType errorLevel="suppress" />
         <MixedAssignment errorLevel="suppress" />
         <ForbiddenCode errorLevel="suppress" />
     </issueHandlers>
