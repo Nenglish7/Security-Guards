@@ -27,7 +27,6 @@ interface ProcessInterface
      *
      * @throws InvalidArgumentException If the command options is not an array or Traversable.
      * @throws InvalidArgumentException If the command type is not recognized.
-     * @throws UnexpectedValueException If the command options are not recognized.
      *
      * @return void
      */
