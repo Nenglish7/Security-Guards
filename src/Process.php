@@ -32,7 +32,7 @@ class Process implements ProcessInterface
     /**
      * @var string $commandType The command type passed.
      */
-    private $commanType = '';
+    private $commandType = '';
     
     /**
      * @var mixed $options The list of options passed.
@@ -65,7 +65,7 @@ class Process implements ProcessInterface
         } else {
             throw new Exception\InvalidArgumentException('The variable `$options` is not an array or an instance of `Traversable`.');
         }
-        $this->commanType = $commandType;
+        $this->commandType = $commandType;
         $this->options = $options;
     }
     
@@ -81,8 +81,13 @@ class Process implements ProcessInterface
         if (\trim($optionLine) == '') {
             $optionLine = '';
         }
-        if ($this->commanType == 'install') {
-            \exec('composer install' . $optionLine);
+        if ($this->commandType == 'install') {
+            $complete = 0;
+            $out = array();
+            \exec('composer install' . $optionLine . '2>&1', $out, $complete);
+            if ($complete !== 0) {
+                die('<code>We are not able to run `composer install`. If you do not have composer installed please see <a href="https://getcomposer.org/">https://getcomposer.org/</a>. <br>(Error #' . $complete . ') Here is the output of the command:<br>' . implode("<br>", $out) . '</code>');
+            }
         }
     }
 }
