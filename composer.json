@@ -24,6 +24,10 @@
         "files": ["./functions.php"],
         "classmap": ["./Traversable.php", "./Throwable.php"]
     },
+    "support": {
+        "docs": "https://nenglish7.github.io/composer-engine/commands",
+        "email": "nenglish0820@outlook.com"
+    },
     "require": {
         "php": "^5.6|^7"
     },
