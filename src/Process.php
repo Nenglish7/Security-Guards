@@ -99,7 +99,9 @@ class Process implements ProcessInterface
                 }
             }
             $command = $this->escapeArgument($this->commandType);
-            return \shell_exec(\escapeshellcmd("composer {$command} {$this->packageName}{$this->currentVersion} {$options}"));
+            $package = $this->escapeArgument($this->packageName);
+            $version = $this->escapeArgument($this->currentVersion);
+            return \shell_exec(\escapeshellcmd("composer {$command} {$package}{$version} {$options}"));
         } else {
             if ($this->packageName != '') {
                 $this->packageName = " {$this->packageName}";
