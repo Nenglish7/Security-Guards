@@ -10,12 +10,14 @@
  * @package composer-engine.
  */
 
-namespace Nenglish7\ComposerEngine;
+namespace Nenglish7\ComposerEngine\Tests;
 
 /**
  * use PHPUnit\Framework\TestCase;
+ * use Nenglish7\ComposerEngine\Process;
  */
 use PHPUnit\Framework\TestCase;
+use Nenglish7\ComposerEngine\Process;
 
 /**
  * ProcessTest.
@@ -41,7 +43,7 @@ class ProcessTest extends TestCase
     
     public function testException1()
     {
-        $this->expectException(Exception\UnexpectedValueException::class);
+        $this->expectException(Nenglish7\ComposerEngine\Exception\UnexpectedValueException::class);
         $process1 = new Process([
             'foo-bar'
         ], 'install');
@@ -49,7 +51,7 @@ class ProcessTest extends TestCase
     
     public function testException2()
     {
-        $this->expectException(Exception\InvalidArgumentException::class);
+        $this->expectException(Nenglish7\ComposerEngine\Exception\InvalidArgumentException::class);
         $process1 = new Process([
             'foo-bar'
         ], \true);
@@ -57,7 +59,7 @@ class ProcessTest extends TestCase
     
     public function testException3()
     {
-        $this->expectException(Exception\InvalidArgumentException::class);
+        $this->expectException(Nenglish7\ComposerEngine\Exception\InvalidArgumentException::class);
         $process1 = new Process(\true, 'install');
     }
 }
