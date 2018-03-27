@@ -92,7 +92,7 @@ class Process implements ProcessInterface
      */
     public function run()
     {
-        $options = $this->escapeArgument(\trim($this->getOptions));
+        $options = $this->escapeArgument(\trim($this->getOptions()));
         if ($this->commandType != 'update') {
             if ($this->commandType == 'require') {
                 if (\trim($this->currentVersion) != '') {
