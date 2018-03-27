@@ -100,13 +100,13 @@ class Process implements ProcessInterface
                 }
             }
             $command = $this->escapeArgument($this->commandType);
-            return \shell_exec("composer {$command} {$this->packageName}{$this->currentVersion} {$options}");
+            return \shell_exec(\escapeshellcmd("composer {$command} {$this->packageName}{$this->currentVersion} {$options}"));
         } else {
             if ($this->packageName == '') {
                 $this->packageName .= ' ';
             }
             $command = $this->escapeArgument($this->commandType);
-            return \shell_exec("composer {$command}{$this->packageName} {$options}");
+            return \shell_exec(\escapeshellcmd("composer {$command}{$this->packageName} {$options}"));
         }
     }
     
