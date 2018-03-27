@@ -29,12 +29,4 @@
             </exclude>
         </whitelist>
     </filter>
-    <logging>
-        <log type="coverage-clover" target="./build/logs/clover.xml" />
-    </logging>
-    <testsuites>
-        <testsuite name="composer-engine Test Suite">
-            <directory suffix="Test.php">./tests</directory>
-        </testsuite>
-    </testsuites>
 </phpunit>
