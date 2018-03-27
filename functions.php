@@ -14,26 +14,9 @@
  * use Nenglish7\ComposerEngine\Process;
  */
 use Nenglish7\ComposerEngine\Process;
-<?php
-/**
- * Composer Engine.
- *
- * @author  Nicholas English <nenglish0820@outlook.com>.
- *
- * @link    <https://github.com/Nenglish7/composer-engine> Github repository.
- * @license <https://github.com/Nenglish7/composer-engine/blob/master/LICENSE> GPL-3.0 License.
- *
- * @package composer-engine.
- */
-
-/**
- * use Nenglish7\ComposerEngine\Process;
- */
-use Nenglish7\ComposerEngine\Process;
 
 function composer_install($options = [])
 {
-    $process = new Process();
-    $process('install', $options);
+    $process = new Process('install', $options);
+    $process->run();
 }
-
