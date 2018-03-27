@@ -17,20 +17,37 @@ namespace Nenglish7\ComposerEngine;
  */
 class Options
 {
-    /** @const array INSTALL A list of all the install options. */
-    const INSTALL = [
+    /** @const array REQUIRE A list of all the require options. */
+    const REQUIRE = [
+        '--dev',
         '--prefer-source',
         '--prefer-dist',
-        '--dry-run',
-        '--dev',
-        '--no-dev',
-        '--no-autoloader',
-        '--no-scripts',
         '--no-progress',
         '--no-suggest',
+        '--no-update',
+        '--no-scripts',
+        '--update-no-dev',
+        '--with-dependencies',
+        '--with-all-dependencies',
+        '--ignore-platform-reqs',
+        '--prefer-stable',
+        '--prefer-lowest',
+        '--sort-packages',
         '--optimize-autoloader',
         '--classmap-authoritative',
-        '--apcu-autoloader',
-        '--ignore-platform-reqs'
+        '--apcu-autoloader'
+    ];
+    /** @const array REMOVE A list of all the remove options. */
+    const REMOVE = [
+        '--dev',
+        '--no-progress',
+        '--no-update',
+        '--no-scripts',
+        '--update-no-dev',
+        '--update-with-dependencies',
+        '--ignore-platform-reqs',
+        '--optimize-autoloader',
+        '--classmap-authoritative',
+        '--apcu-autoloader'
     ];
 }
