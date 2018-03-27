@@ -88,7 +88,7 @@ class Process implements ProcessInterface
     /**
      * Execute a composer command based on set variables.
      *
-     * @return string The command output.
+     * @return string|null The command output.
      */
     public function run()
     {
