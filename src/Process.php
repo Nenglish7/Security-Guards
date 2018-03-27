@@ -26,7 +26,9 @@ class Process implements ProcessInterface
      * @var array $commandTypes The list of command types.
      */
     private $commandTypes = [
-        'install'
+        'require',
+        'remove',
+        'update'
     ];
     
     /**
@@ -40,10 +42,16 @@ class Process implements ProcessInterface
     private $options = [];
     
     /**
+     * @var string $packageName The name of the package to use.
+     */
+    private $packageName = '';
+    
+    /**
      * Process the requested command.
      *
      * @param string $commandType The requested command type.
      * @param mixed $options      The requested options for the command.
+     * @param string $packageName The name of the package.
      *
      * @throws InvalidArgumentException If the command options is not an array or Traversable.
      * @throws InvalidArgumentException If the command type is not recognized.
@@ -51,7 +59,7 @@ class Process implements ProcessInterface
      *
      * @return void
      */
-    public function __construct($commandType, $options = [])
+    public function __construct($commandType, $options = [], $packageName = '')
     {
         if (!\in_array($commandType, $this->commandTypes, \true)) {
             throw new Exception\InvalidArgumentException(\sprintf('The variable `$command` needs to be a string. Passed: `%s`.', \gettype($commandType)));
@@ -67,6 +75,7 @@ class Process implements ProcessInterface
         }
         $this->commandType = $commandType;
         $this->options = $options;
+        $this->packageName = $packageName;
     }
     
     /**
@@ -81,12 +90,13 @@ class Process implements ProcessInterface
         if (\trim($optionLine) == '') {
             $optionLine = '';
         }
-        if ($this->commandType == 'install') {
+        $packageName = \escapeshellarg($this->packageName);
+        if ($this->commandType === 'require') {
             $complete = 0;
             $out = array();
-            \exec('composer install' . $optionLine . ' 2>&1', $out, $complete);
+            \exec('composer require ' . $optionLine . ' 2>&1', $out, $complete);
             if ($complete !== 0) {
-                die('We are not able to run `composer install`. If you do not have composer installed please see <a href="https://getcomposer.org/">https://getcomposer.org/</a>');
+                die('We are not able to run `composer require`. If you do not have composer installed please see <a href="https://getcomposer.org/">https://getcomposer.org/</a>');
             }
         }
     }
