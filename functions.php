@@ -13,6 +13,7 @@
 putenv('COMPOSER_HOME=' . getcwd() . '/vendor/bin/composer');
 
 /** @link <https://getcomposer.org/doc/03-cli.md#install>. */
-function composer_install($options = [])
+function composer_install()
 {
+    system('php /usr/local/bin/composer install -d /...');
 }
