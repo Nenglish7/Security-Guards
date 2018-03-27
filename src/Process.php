@@ -84,7 +84,7 @@ class Process implements ProcessInterface
         if ($this->commandType == 'install') {
             $complete = 0;
             $out = array();
-            \exec('composer install' . $optionLine . '2>&1', $out, $complete);
+            \exec('composer install 2>&1' . $optionLine . '', $out, $complete);
             if ($complete !== 0) {
                 die('<code>We are not able to run `composer install`. If you do not have composer installed please see <a href="https://getcomposer.org/">https://getcomposer.org/</a>. <br>(Error #' . $complete . ') Here is the output of the command:<br>' . implode("<br>", $out) . '</code>');
             }
