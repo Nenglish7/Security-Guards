@@ -57,16 +57,14 @@ class Process implements ProcessInterface
     /**
      * Process the requested command.
      *
-     * @param string $commandType    The requested command type.
-     * @param mixed $options         The requested options for the command.
+     * @param string $commandType          The requested command type.
+     * @param mixed $options               The requested options for the command.
      * @param string $packageName    The name of the package.
      * @param string $currentVersion The version requested from the package.
      *
      * @throws InvalidArgumentException If the command options is not an array or Traversable.
      * @throws InvalidArgumentException If the command type is not recognized.
      * @throws UnexpectedValueException If the command options are not recognized.
-     * @throws InvalidArgumentException If the package name is not a string.
-     * @throws InvalidArgumentException If the version constraint is not a string
      *
      * @return void
      */
@@ -80,18 +78,6 @@ class Process implements ProcessInterface
         }
         if (!is_array($options) && !($options instanceof Traversable)) {
             throw new Exception\InvalidArgumentException('The variable `$options` is not an array or an instance of `Traversable`.');
-        }
-        if (!\is_string($packageName)) {
-            throw new Exception\InvalidArgumentException(\sprintf(
-                'The variable `$packageName` needs to be a string. Passed: `%s`.',
-                \gettype($packageName)
-            ));
-        }
-        if (!\is_string($currentVersion)) {
-            throw new Exception\InvalidArgumentException(\sprintf(
-                'The variable `$currentVersion` needs to be a string. Passed: `%s`.',
-                \gettype($currentVersion)
-            ));
         }
         $this->currentVersion = \trim($currentVersion);
         $this->packageName = \trim($packageName);
