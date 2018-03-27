@@ -18,9 +18,6 @@
         }
     ],
     "autoload": {
-        "psr-4": {
-            "Nenglish7\\ComposerEngine\\": "./src"
-        },
         "files": ["./functions.php"],
         "classmap": ["./Traversable.php", "./Throwable.php"]
     },
@@ -29,12 +26,15 @@
         "email": "nenglish0820@outlook.com"
     },
     "require": {
-        "php": "^5.6|^7"
+        "php": "^5.6|^7",
+        "symfony/console": "^3|^4",
+        
     },
     "suggest": {
         "roave/security-advisories": "Prevents installation of composer packages with known security vulnerabilities."
     },
     "require-dev": {
+        "composer/composer": "dev-master",
         "phpunit/phpunit": "^5|^6|^7",
         "vimeo/psalm": "^0|^1"
     },
