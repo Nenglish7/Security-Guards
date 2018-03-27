@@ -26,40 +26,40 @@ class ProcessTest extends TestCase
 {
     public function testConstructor()
     {
-        $process1 = new Process([
-        ], 'install');
-        $process2 = new Process([
+        $process1 = new Process('install', [
+        ]);
+        $process2 = new Process('install', [
             '--no-dev'
-        ], 'install');
-        $process3 = new Process([
+        ]);
+        $process3 = new Process('install', [
             '--no-suggest',
             '--ignore-platform-reqs'
-        ], 'install');
-        $process4 = new Process([
+        ]);
+        $process4 = new Process('install', [
             '--dry-run'
-        ], 'install');
+        ]);
         $this->assertTrue(\true);
     }
     
     public function testException1()
     {
-        $this->expectException(Nenglish7\ComposerEngine\Exception\UnexpectedValueException::class);
-        $process1 = new Process([
+        $this->expectException(\Nenglish7\ComposerEngine\Exception\UnexpectedValueException::class);
+        $process1 = new Process('install', [
             'foo-bar'
-        ], 'install');
+        ]);
     }
     
     public function testException2()
     {
-        $this->expectException(Nenglish7\ComposerEngine\Exception\InvalidArgumentException::class);
-        $process1 = new Process([
+        $this->expectException(\Nenglish7\ComposerEngine\Exception\InvalidArgumentException::class);
+        $process1 = new Process(\true, [
             'foo-bar'
-        ], \true);
+        ]);
     }
     
     public function testException3()
     {
-        $this->expectException(Nenglish7\ComposerEngine\Exception\InvalidArgumentException::class);
-        $process1 = new Process(\true, 'install');
+        $this->expectException(\Nenglish7\ComposerEngine\Exception\InvalidArgumentException::class);
+        $process1 = new Process('install', \true);
     }
 }
