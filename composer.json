@@ -18,8 +18,7 @@
         }
     ],
     "autoload": {
-        "files": ["./functions.php"],
-        "classmap": ["./Traversable.php", "./Throwable.php"]
+        "files": ["./functions.php"]
     },
     "support": {
         "docs": "https://nenglish7.github.io/composer-engine/commands",
@@ -28,15 +27,15 @@
     "require": {
         "php": "^5.6|^7",
         "symfony/console": "^3|^4",
-        
+        "nicholas/object-polyfill": "^1",
+        "ext-json"
     },
     "suggest": {
         "roave/security-advisories": "Prevents installation of composer packages with known security vulnerabilities."
     },
     "require-dev": {
         "composer/composer": "dev-master",
-        "phpunit/phpunit": "^5|^6|^7",
-        "vimeo/psalm": "^0|^1"
+        "phpunit/phpunit": "^5|^6|^7"
     },
     "config": {
         "preferred-install": "dist",
