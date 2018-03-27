@@ -15,8 +15,20 @@
  */
 use Nenglish7\ComposerEngine\Process;
 
-function composer_install($options = [])
+function composer_require($packageName = '', $currentVersion = '', $options = [])
 {
-    $process = new Process('install', $options);
-    $process->run();
+    $process = new Process('require', $options, $packageName, $currentVersion);
+    return $process->run();
+}
+
+function composer_update($packageName = '', $options = [])
+{
+    $process = new Process('update', $options, $packageName);
+    return $process->run();
+}
+
+function composer_remove($packageName = '', $options = [])
+{
+    $process = new Process('remove', $options, $packageName);
+    return $process->run();
 }
