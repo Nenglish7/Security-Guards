@@ -1,44 +1,30 @@
 {
-    "name": "nicholas/composer-engine",
-    "description": "A composer controller for managing your dependencies from your php script.",
-    "keywords": [
-        "composer-package",
-        "secure-by-default",
-        "dependency-manager"
-    ],
-    "homepage": "https://github.com/Nenglish7/composer-engine",
-    "type": "library",
-    "license": "GPL-3.0",
+    "name": "nenglish7/security-guards",
+    "description": "Add a complete list of security guards.",
+    "license": "Apache-2.0",
     "authors": [
         {
             "name": "Nicholas English",
             "email": "nenglish0820@outlook.com",
-            "homepage": "https://github.com/obozaxy",
-            "role": "Maintainer"
+            "homepage": "https://github.com/Nenglish7"
         }
     ],
     "autoload": {
-        "files": ["./functions.php"]
-    },
-    "support": {
-        "docs": "https://nenglish7.github.io/composer-engine/commands",
-        "email": "nenglish0820@outlook.com"
+        "psr-4": {
+            "Nenglish7\\SecurityGuards\\": "./src"
+        }
     },
     "require": {
-        "php": "^5.6|^7",
-        "composer/composer": "^~1",
-        "ext-json"
-    },
-    "suggest": {
-        "roave/security-advisories": "Prevents installation of composer packages with known security vulnerabilities."
+        "php": "^7.2"
     },
     "require-dev": {
-        "composer/composer": "dev-master",
-        "phpunit/phpunit": "^5|^6|^7"
+        "phpunit/phpunit": "^7",
+        "vimeo/psalm": "^1"
     },
     "config": {
         "preferred-install": "dist",
         "optimize-autoloader": true,
         "sort-packages": true
-    }
+    },
+    "prefer-stable": true
 }
