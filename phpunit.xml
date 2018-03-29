@@ -30,7 +30,7 @@
         </whitelist>
     </filter>
     <testsuites>
-        <testsuite name="Route Test Suit">
+        <testsuite name="Nenglish7/Security-Guards Test Suit">
             <directory suffix="Test.php">./tests</directory> 
         </testsuite>
     </testsuites>
