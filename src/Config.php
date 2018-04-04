@@ -73,7 +73,7 @@ class Config extends IniConfig implements ConfigInterface
                 if (!\is_bool($value)) {
                     throw new Exception\InvalidArgumentException('The data type is invalid for the requested directive.');
                 }
-                Session::addDirective($key, \true);
+                Session::addDirective($key, $value);
             } else {
                 throw new Exception\UnexpectedValueException('The session key is unknown or unsupported');
             }
